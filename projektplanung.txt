@@ -1,0 +1,24 @@
+Datenbankmodell
+Frontend
+ - OOP Struktur (Template Verwaltung)
+ - Datenbank erstellen 
+ - Startseite Ansicht mit Beispielthemen prüfen
+ - Startseite Ansicht mit Beispieldokus(jpeg,png,pdf,rtf,txt) prüfen 
+ ende Sprint(milestone)
+Anmeldung(admin/user)
+ - Datenbank(sha 512) optional salt
+ - login/logout Programmierung
+ - Sessionverwaltung 
+ - Datensicherheit/Validierung/Fehlermeldung
+ ende Sprint Zwischenversion bis 15.05 (Matthias)
+Upload
+ - Upload Routine
+ - Verzeichnisse anlegen etc..
+ ende Sprint
+Design
+ - Einsatz bootstrap
+
+Tests
+ - online
+ - optional(Thumbnails) etc..
+ ende Sprint Projektende 26.05   
