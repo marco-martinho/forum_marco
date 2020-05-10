@@ -21,4 +21,6 @@ Design
 Tests
  - online
  - optional(Thumbnails) etc..
- ende Sprint Projektende 26.05   
+ ende Sprint Projektende 26.05  
+
+weitere Korrekturen 
