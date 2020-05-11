@@ -1,5 +1,6 @@
 ﻿Datenbankmodell
 Frontend
+
  - OOP Struktur (Template Verwaltung)
  - Datenbank erstellen 
  - Startseite Ansicht mit Beispielthemen prüfen
