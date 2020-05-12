@@ -26,14 +26,14 @@ Tests
 
 weitere Korrekturen 
 
-<<<<<<< HEAD
+
 Hallo Marco
 
 =======
 
 HALLO DAS IST DIE ÄNDERUNG VON KEMPALSHIK!!!!
 Hier IST Die Veränderung!
-<<<<<<< HEAD
+
 HIER JETZT NUR ALEXBRANCH ÄNDERUNG!
 Test merge branch into master Jan
 
@@ -45,4 +45,4 @@ jo Amadeus
 Test von Kevin
 Test erneut von Jan
 Nochmal ein Test
->>>>>>> master
+
