@@ -1,5 +1,6 @@
-Datenbankmodell
+﻿Datenbankmodell
 Frontend
+
  - OOP Struktur (Template Verwaltung)
  - Datenbank erstellen 
  - Startseite Ansicht mit Beispielthemen prüfen
@@ -25,9 +26,23 @@ Tests
 
 weitere Korrekturen 
 
+<<<<<<< HEAD
+Hallo Marco
+
+=======
 
 HALLO DAS IST DIE ÄNDERUNG VON KEMPALSHIK!!!!
 Hier IST Die Veränderung!
+<<<<<<< HEAD
 HIER JETZT NUR ALEXBRANCH ÄNDERUNG!
 Test merge branch into master Jan
 
+=======
+Hier Veränderung von Jan!
+Hallo ich bin Marco
+hallo mrtn
+jo Amadeus
+Test von Kevin
+Test erneut von Jan
+Nochmal ein Test
+>>>>>>> master
