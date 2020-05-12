@@ -2,14 +2,14 @@
 Frontend
 
  - OOP Struktur (Template Verwaltung)
- - Datenbank erstellen 
+ - Datenbank erstellen
  - Startseite Ansicht mit Beispielthemen prüfen
- - Startseite Ansicht mit Beispieldokus(jpeg,png,pdf,rtf,txt) prüfen 
+ - Startseite Ansicht mit Beispieldokus(jpeg,png,pdf,rtf,txt) prüfen
  ende Sprint(milestone)
 Anmeldung(admin/user)
  - Datenbank(sha 512) optional salt
  - login/logout Programmierung
- - Sessionverwaltung 
+ - Sessionverwaltung
  - Datensicherheit/Validierung/Fehlermeldung
  ende Sprint Zwischenversion bis 15.05 (Matthias)
 Upload
@@ -22,9 +22,9 @@ Design
 Tests
  - online
  - optional(Thumbnails) etc..
- ende Sprint Projektende 26.05  
+ ende Sprint Projektende 26.05
 
-weitere Korrekturen 
+weitere Korrekturen
 
 
 Hallo Marco
@@ -51,3 +51,4 @@ Amadeus - test 12.5
 Marco 2. veränderung
 Amadeus 2nd test
 Marco 3. veränderung
+Hossa Alex hier meine 1te Veränderung
