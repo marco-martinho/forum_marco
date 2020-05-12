@@ -34,8 +34,8 @@ Hallo Marco
 HALLO DAS IST DIE ÄNDERUNG VON KEMPALSHIK!!!!
 Hier IST Die Veränderung!
 Hier Veränderung von Jan!
->>>>>>> d5c5876706713c63deb95320a07e0a96f3c0999f
 Hallo ich bin Marco
 hallo mrtn
 jo Amadeus
 Test von Kevin
+Test erneut von Jan
