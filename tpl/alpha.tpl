@@ -5,23 +5,14 @@
     }
     echo '<button value="Ä" name="alpha">Ä</button><button value="Ö" name="search">Ö</button><button value="Ü" name="alpha">Ü</button>';
    ?>
-   
 
 </form>
 
-<!--normal data ['Thema'->'A,B,C']    
-     alpha data ['A..','A..',]-->
-<ul  class="title_link">
-<?php    
-foreach($data as $w){
-  echo '<li>'.$w['title']."<ul>";
-  $liste = explode(",", $w['ut']);
-  foreach($liste as $ut){
-  
-    echo "<li>".$ut."</li>";
-  
-  }
-  echo "</ul></li>"; 
-}
+
+<?php 
+echo "Es wurden folgende Einträge funden: ".count($data)."<br><ul>";
+foreach($data as $spalte){
+echo '<li><a href="?content_id='.$spalte['id'].'">'.$spalte['name'].'</a></li>';
+} 
+echo "</ul>";
 ?>
-</ul>
