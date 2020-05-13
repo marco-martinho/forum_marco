@@ -10,9 +10,11 @@
 
 <h2>Ihr Content</h2>
 <?php 
-
+# Ausgabe Bilder
 foreach($data as $spalte){
-  echo $spalte['path'];
+  $path = DOCUPATH.$spalte['path'];
+  echo '<div class="docu shadow-lg rounded" style="background-image:url('.$path.')">';
+  echo '</div>';
 } 
 
 ?>
