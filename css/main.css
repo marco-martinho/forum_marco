@@ -3,9 +3,10 @@ body{
 }
 .docu{
     float:left;
-    width:50px;
+    width:55px;
     height:80px;
     background-size: cover;
     margin:0 5px 5px 0;
     border:1px solid darkgray;
+    background-position: center center;
 }

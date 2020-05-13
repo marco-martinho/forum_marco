@@ -12,7 +12,7 @@
 <body class="d-flex flex-column h-100">
  <header>
  <h1>cerebro</h1>
-   <form method="post">
+   <form method="post" action="index.php">
        <input type="text" name="search">
        <button>&#x1F50D</button>
    </form>
