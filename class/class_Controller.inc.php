@@ -3,11 +3,10 @@ class Controller{
     private $r;//Auffang der QUERY String ? search = A
     public function __construct(){
         $this->r = $_REQUEST;//assoziatives Array
-        
         switch(key($this->r)){
             case "alpha": $this->getAlpha();
                            break;
-            case "search":$this->getSearch();
+            case "search":$this->getSearch(); 
                            break;
             case "content_id":$this->getContent();
                            break;    
@@ -17,11 +16,13 @@ class Controller{
         View::toDisplay();//user Ansicht
     }
     private function getContent(){
-        $data = Model::getAllContent($this->r['content_id']);
+        $data['docu'] = Model::getAllContent($this->r['content_id']);
+        $data['search'] =  $_SESSION['search'];
         View::setLayout($data,"content");
     }
     
     private function getSearch(){// Suchefunktion nach Buchstaben
+       $_SESSION['search'] = $this->r['search'];//Speichern Suchwort
        $data = Model::getAllThemesSearch($this->r['search']); 
        View::setLayout($data,"alpha"); 
     }

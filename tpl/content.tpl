@@ -7,11 +7,11 @@
    ?>
 
 </form>
-
+<?php echo '<a href="index.php?search='.$data['search'].'"> << </a>' ?>
 <h2>Ihr Content</h2>
 <?php 
 # Ausgabe Bilder
-foreach($data as $spalte){
+foreach($data['docu'] as $spalte){
   $path = DOCUPATH.$spalte['path'];
   $link = $path; 
   $parts = pathinfo($path);
