@@ -49,5 +49,13 @@ public static function getAllThemesSearch($search){
      return Service::getAll($maske);
  }
 
+ public static function getAllEdit(){
+     $sql = "SELECT id, name FROM tb_themes ORDER BY name ASC";
+     $maske = Service::setPrepare($sql);
+     return Service::getAll($maske);
+ }
+
+
+
 }
 ?>

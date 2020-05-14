@@ -19,8 +19,10 @@
  </header>
  <nav>
    <form method="post" action="index.php">
-   
        <button >Home</button>
+   </form>
+   <form method="post" action="index.php?edit=true">
+       <button >Edit</button>
    </form>
  </nav>
 <main>

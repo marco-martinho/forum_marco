@@ -1,10 +1,4 @@
-<form method="POST">
-   <?php 
-    foreach(range('A','Z') as $char){
-      echo '<button value="'.$char.'" name="alpha">'.$char.'</button>';
-    }
-    echo '<button value="Ä" name="alpha">Ä</button><button value="Ö" name="search">Ö</button><button value="Ü" name="alpha">Ü</button>';
-   ?>
+<?php require_once("alpha_menu.tpl")?>
 
 </form>
 <?php echo '<a href="index.php?search='.$data['search'].'"> << </a>' ?>
