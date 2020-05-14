@@ -27,30 +27,11 @@ Tests
 weitere Korrekturen
 
 
-Hallo Marco
+Freitag:
 
-=======
-
-HALLO DAS IST DIE ÄNDERUNG VON KEMPALSHIK!!!!
-Hier IST Die Veränderung!
-
-HIER JETZT NUR ALEXBRANCH ÄNDERUNG!
-Test merge branch into master Jan
-
-=======
-Hier Veränderung von Jan!
-Hallo ich bin Marco
-hallo mrtn
-jo Amadeus
-Test von Kevin
-Test erneut von Jan
-Nochmal ein Test
-Marco - neue veränderung
-Amadeus - test 12.5
-
-Marco 2. veränderung
-Amadeus 2nd test
-Marco 3. veränderung
-Hossa Alex hier meine 1te Veränderung
-Hossa Alex hier meine 2te Veränderung über die Branch Alex2
-Daniel zweite test
+1. Test upload,Test der Suche (Fehleranlyse)
+2. Design
+   Bootstrap Design entwickeln
+   - favorisiert ein umgesetztes Bootstrap design
+   - Liste was noch rein muß ins Projekt
+     (Details)
