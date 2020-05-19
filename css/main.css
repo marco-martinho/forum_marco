@@ -10,3 +10,19 @@ body{
     border:1px solid darkgray;
     background-position: center center;
 }
+.infogreen{
+  display: inline-block;
+  background-color: green;
+  color:yellow;
+  border-radius:4px 
+  border: 2px solid yellow;
+  padding:4px;
+}
+.infored{
+    display: inline-block;
+    background-color: red;
+    color:yellow;
+    border-radius:4px; 
+    border: 2px solid yellow;
+    padding:4px;
+  }

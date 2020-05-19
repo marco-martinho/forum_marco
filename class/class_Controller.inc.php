@@ -2,6 +2,7 @@
 class Controller{
     private $r;//Auffang der QUERY String ? search = A
     public static $referer = "index.php";//index.php?search=xyz
+    public static $info = "";
     public function __construct(){
         $this->r = $_REQUEST;//assoziatives Array
         print_r($_REQUEST);//Test
@@ -17,15 +18,16 @@ class Controller{
                            break;
             case "edit":$this->getEdit();// öffnen des Editierungsbereiches
                            break;
-            case "themen_id":$this->setIntoDB();//id des Themas soll upload oder Thema
+            case "themen_id":$this->setIntoDB();//id des Themas für upload oder Thema
                              break;
             default: $data = Model::getAllThemes();
                      View::setLayout($data,"start");
         }
         View::toDisplay();//user Ansicht
+        self::$info = "";//Info entfernen
     }
     private function setIntoDB(){// Hochladen von Content bzw.Änderung Themen
-        if(isset($_FILES['userfile']['name'])){// File hat Name
+        if(isset($_FILES['userfile']['name'])){// upload File hat Name
             $name = $_FILES['userfile']['name'];
             //php Befehl für uplaod,userfile= input name,tmp_name = fest, pfad, Dateiname
             if(move_uploaded_file($_FILES['userfile']['tmp_name'],DOCUPATH.$name)){
@@ -34,6 +36,18 @@ class Controller{
                echo $_FILES['userfile']['error']; 
             }
         }
+           //wenn vorhanden nur File wurde hochgeladen
+        if(Model::getIdImageContent($name,$this->r['themen_id'])){
+            self::$info =  '<div class="infogreen">Datei wurde erneuert</div>';
+        }else{
+           //wenn nicht vorhanden anlegen
+           if(Model::setImageToContent($name,$this->r['themen_id'])){
+            self::$info = '<div class="infogreen"> Erfolgreich eingetragen</div>';
+          }else{
+            self::$info = '<div class="infored">Eintrag nicht in Datenbank</div>';
+          }
+       }
+
         $data = Model::getAllEdit();//Anzeige des Options Felder
         View::setLayout($data,"edit");
     }    

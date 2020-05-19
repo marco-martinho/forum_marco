@@ -30,7 +30,15 @@ class Service{
     $maske->execute();
     SELF::test();//nur für Testphase  
     return $maske->fetchAll();//Array mehrdimensional  
-  }    
+  }  
+  
+  public static function setIntoDB($maske){
+    return $maske->execute();//Eintragen in Datenbank betroffene Zeilen zurückliefern
+  }
+  public static function getOneValue($maske){
+    $maske->execute();
+    return $maske->fetchColumn();//gib nur 1 wert zurück
+  }
     
 
  public static function db_create(){
