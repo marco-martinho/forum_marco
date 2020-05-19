@@ -1,11 +1,14 @@
 <?php require_once("alpha_menu.tpl")?>
 
 </form>
-<?php echo '<a href="index.php?search='.$data['search'].'"> << </a>' ?>
+<?php 
+     echo '<a href="' .  Controller::$referer .  '"> << </a>'; 
+ ?>
+
 <h2>Ihr Content</h2>
 <?php 
 # Ausgabe Bilder
-foreach($data['docu'] as $spalte){
+foreach($data as $spalte){
   $path = DOCUPATH.$spalte['path'];
   $link = $path; 
   $parts = pathinfo($path);

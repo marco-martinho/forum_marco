@@ -1,9 +1,13 @@
 <?php
 class Controller{
     private $r;//Auffang der QUERY String ? search = A
+    public static $referer = "index.php";//index.php?search=xyz
     public function __construct(){
         $this->r = $_REQUEST;//assoziatives Array
-        print_r($_REQUEST);
+        print_r($_REQUEST);//Test
+        // wenn  Referer vorhanden dann speichern in static $referer
+        if(isset($_SERVER['HTTP_REFERER'])) SELF::$referer = $_SERVER['HTTP_REFERER'];//Link + Query
+        
         switch(key($this->r)){
             case "alpha": $this->getAlpha();// Auswahl über Buttons A,B,C
                            break;
@@ -41,13 +45,11 @@ class Controller{
    
 
     private function getContent(){
-        $data['docu'] = Model::getAllContent($this->r['content_id']);
-        $data['search'] =  $_SESSION['search'];
+        $data = Model::getAllContent($this->r['content_id']);
         View::setLayout($data,"content");
     }
     
     private function getSearch(){// Suchefunktion nach Buchstaben
-       $_SESSION['search'] = $this->r['search'];//Speichern Suchwort
        $data = Model::getAllThemesSearch($this->r['search']); 
        View::setLayout($data,"alpha"); 
     }

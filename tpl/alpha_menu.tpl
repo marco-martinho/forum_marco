@@ -1,6 +1,6 @@
 
 <!-- alpha_Menu.tpl -->
-<form method="POST" action="index.php">
+<form method="get" action="index.php">
    <?php 
     foreach(range('A','Z') as $char){
       echo '<button value="'.$char.'" name="alpha">'.$char.'</button>';

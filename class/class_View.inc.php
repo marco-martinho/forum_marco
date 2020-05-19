@@ -1,7 +1,7 @@
 <?php
 class View{
  private static $out = "Template konnte nicht gefunden werden";
-
+ 
  public static function setLayout($data,$tpl){
    ob_start();// Puffer auf Server mit Interpreter
      require_once "tpl/head.tpl";//statisch
