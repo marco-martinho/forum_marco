@@ -14,15 +14,15 @@ body{
   display: inline-block;
   background-color: green;
   color:yellow;
-  border-radius:4px 
+  border-radius:6px; 
   border: 2px solid yellow;
-  padding:4px;
+  padding:0px 6px 2px 6px;
 }
 .infored{
     display: inline-block;
     background-color: red;
     color:yellow;
-    border-radius:4px; 
+    border-radius:6px; 
     border: 2px solid yellow;
-    padding:4px;
+    padding:0px 6px 2px 6px;
   }
