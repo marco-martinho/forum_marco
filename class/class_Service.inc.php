@@ -77,7 +77,7 @@ class Service{
                     VALUES ('test_1.png',4),('image.jpg',4),('filezilla.gif',6),('bgr_license.rtf',6),('Ajax.pdf',5),('image.jpg',5),('text.txt',5)
                     ");*/
    
-   SELF::$PDO->exec("INSERT INTO tb_themes(name)
+  /* SELF::$PDO->exec("INSERT INTO tb_themes(name)
                      VALUES ('Thema 1'),('Thema 2'),
                      ('A'),('B'),('C'),('D'),('E'),('F')");
     //(DML)    

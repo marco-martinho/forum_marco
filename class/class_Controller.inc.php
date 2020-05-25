@@ -10,23 +10,42 @@ class Controller{
         if(isset($_SERVER['HTTP_REFERER'])) SELF::$referer = $_SERVER['HTTP_REFERER'];//Link + Query
         
         switch(key($this->r)){
-            case "alpha": $this->getAlpha();// Auswahl über Buttons A,B,C
+            case "alpha":  $this->getAlpha();// Auswahl über Buttons A,B,C
                            break;
-            case "search":$this->getSearch();// Sucheingabe 
+            case "search": $this->getSearch();// Sucheingabe 
                            break;
             case "content_id":$this->getContent();//Contentfiles anzeigen
                            break;
-            case "edit":$this->getEdit();// öffnen des Editierungsbereiches
-                           break;
-            case "themen_id":$this->setIntoDB();//id des Themas für upload oder Thema
-                             break;
+            case "edit":   $this->getEdit();// öffnen des Editierungsbereiches
+                           break;  
+            case "edit_select":  switch($this->r["select"]){
+                                 case 'userfile': $this->uploadContent();
+                                                  break;
+                                 case 'add':      $this->addTheme();
+                                                  break; 
+                                 case 'rename':   $this->renameTheme();
+                                                  break;
+                                 case 'del':      $this->deleteTheme();
+                                                  break;              
+                                }
+                                $this->getEdit();//Ansicht
+                                break;
             default: $data = Model::getAllThemes();
                      View::setLayout($data,"start");
         }
         View::toDisplay();//user Ansicht
         self::$info = "";//Info entfernen
     }
-    private function setIntoDB(){// Hochladen von Content bzw.Änderung Themen
+    private function deleteTheme(){
+    }
+    private function renameTheme(){
+    }
+
+    private function addTheme(){//Hinzufügen neues Thema
+        Model::setAddTheme($this->r['add']);
+        self::$info =  '<div class="infogreen">Thema hinzugefügt</div>';
+    }
+    private function uploadContent(){// Hochladen von Content bzw.Änderung Themen
         if(isset($_FILES['userfile']['name'])){// upload File hat Name
             $name = $_FILES['userfile']['name'];
             //php Befehl für uplaod,userfile= input name,tmp_name = fest, pfad, Dateiname
@@ -47,9 +66,6 @@ class Controller{
             self::$info = '<div class="infored">Eintrag nicht in Datenbank</div>';
           }
        }
-
-        $data = Model::getAllEdit();//Anzeige des Options Felder
-        View::setLayout($data,"edit");
     }    
 
     private function getEdit(){//Redaktion und Upload anzeigen
@@ -57,7 +73,6 @@ class Controller{
         View::setLayout($data,"edit");
     }
    
-
     private function getContent(){
         $data = Model::getAllContent($this->r['content_id']);
         View::setLayout($data,"content");
@@ -67,7 +82,6 @@ class Controller{
        $data = Model::getAllThemesSearch($this->r['search']); 
        View::setLayout($data,"alpha"); 
     }
-    
     
     private function getAlpha(){// Suchefunktion nach Buchstaben
        $data = Model::getAllThemesAlpha($this->r['alpha']);  

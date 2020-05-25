@@ -70,5 +70,11 @@ public static function getAllThemesSearch($search){
     $maske->bindValue(2,$id_themes,PDO::PARAM_INT); 
     return Service::getOneValue($maske) ;//id wird geliefert wenn path & thema bereits vorhanden
  }
+ public static function setAddTheme($thema){
+    $sql = "INSERT INTO tb_themes (name) VALUES (?)";
+    $maske = Service::setPrepare($sql);
+    $maske->bindValue(1,$thema,PDO::PARAM_STR);
+    return Service::setIntoDB($maske);
+ }
 }
 ?>
