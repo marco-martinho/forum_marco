@@ -6,7 +6,7 @@
 <!-- Start Themen wählen -->
 <form method="POST" action="index.php" enctype="multipart/form-data">
 <input type="hidden" name="edit_select">
-<select name="themen_id">
+<select id="themen_id" onchange="createDeleteFiles()" name="themen_id">
 <?php
 foreach($data as $col){
     echo '<option value="'.$col['id'].'" ';
@@ -18,16 +18,21 @@ foreach($data as $col){
 <!-- End Themen wählen -->
 
 <select onchange="visibleArea(this.value)" name="select">
- <option value="upload" <?php s('select','upload')?> >upload</option>
- <option value="add"    <?php s('select','add')?> >hinzufügen</option>
- <option value="rename" <?php s('select','rename')?> >ändern</option>
- <option value="del"    <?php s('select','del')?> >löschen</option>
+ <option value="t_add"    <?php s('select','t_add')?> >Thema hinzufügen</option>
+ <option value="t_rename" <?php s('select','t_rename')?> >Thema ändern</option>
+ <option value="t_del"    <?php s('select','t_del')?> >Thema löschen</option>
+ <option value="f_upload" <?php s('select','f_upload')?> >File upload</option>
+ <option value="f_del"    <?php s('select','f_del')?> >File löschen</option>
 </select>
 <!-- Area unvisible -->
-<input id="upload" class="area" type="file"   name="userfile" placeholder="upload" >
-<input id="add" class="area" type="text"   name="add" placeholder="neues Thema" >
-<input id="rename" class="area" type="text"   name="rename" placeholder="umbenennen"  >
-<input id="del" class="area" type="hidden" name="del" >
+
+<input id="t_add"    class="area" type="text"   name="t_add" placeholder="neues Thema" >
+<input id="t_rename" class="area" type="text"   name="t_rename" placeholder="umbenennen"  >
+<input id="t_del"    class="area" type="hidden" name="t_del" >
+<input id="f_upload" class="area" type="file"   name="userfile" placeholder="upload" >
+<select id="f_del"   class="area" name="f_del"></select>
+
+
 <!-- end Area unvisible -->
 <br><button >OK</button>
 </form>
@@ -36,7 +41,5 @@ foreach($data as $col){
 Noch zu erledigen
 onsubmit="return checkFile()"
 -->
- 
-
 
 <script src="js/upload_confirm.js"></script>

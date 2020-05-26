@@ -4,6 +4,7 @@ class Controller{
     public static $referer = "index.php";//index.php?search=xyz
     public static $info = "";
     public function __construct(){
+        //index.php?
         $this->r = $_REQUEST;//assoziatives Array
         print_r($_REQUEST);//Test
         // wenn  Referer vorhanden dann speichern in static $referer
