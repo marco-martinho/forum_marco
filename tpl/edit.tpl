@@ -1,6 +1,6 @@
 <!--edit.tpl-->
-<h2>Themen upload</h2>
 
+<h2>Themen upload</h2>
 <?php echo Controller::$info ?>
 
 <!-- Start Themen wählen -->
@@ -25,10 +25,13 @@ foreach($data as $col){
  <option value="f_del"    <?php s('select','f_del')?> >File löschen</option>
 </select>
 <!-- Area unvisible -->
-
+<!-- Thema Löschen -->
 <input id="t_add"    class="area" type="text"   name="t_add" placeholder="neues Thema" >
+<!-- Thema umbenennen -->
 <input id="t_rename" class="area" type="text"   name="t_rename" placeholder="umbenennen"  >
+<!-- Thema löschen -->
 <input id="t_del"    class="area" type="hidden" name="t_del" >
+<!-- File Upload -->
 <input id="f_upload" class="area" type="file"   name="userfile" placeholder="upload" >
 <select id="f_del"   class="area" name="f_del"></select>
 

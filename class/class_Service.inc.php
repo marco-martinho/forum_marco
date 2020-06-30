@@ -33,8 +33,15 @@ class Service{
   }  
   
   public static function setIntoDB($maske){
-    return $maske->execute();//Eintragen in Datenbank betroffene Zeilen zurückliefern
+    return $maske->execute();//Eintragen in Datenbank betroffene Zeilen zurück liefern
   }
+
+  public static function getLastId(){ 
+      
+      return SELF::$PDO->lastInsertId();
+  }
+
+
   public static function getOneValue($maske){
     $maske->execute();
     return $maske->fetchColumn();//gib nur 1 wert zurück

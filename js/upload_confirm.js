@@ -27,6 +27,8 @@ function visibleArea($value){
    document.querySelector('#'+$value).style.display ='block';
    if($value == 'f_del')createDeleteFiles();
 }
+
+
 //Optionsfeld für Löschen von Dateien erstellen
 function createDeleteFiles(){
 var id = document.querySelector('#themen_id').value;
@@ -45,3 +47,9 @@ if(e.readyState == 4 && e.status == 200){
    }
  }
 }
+
+
+/* ############### hauptprogram ############## */
+
+visibleArea('t_add');   // Start mit "Thema hinzufügen"
+//alert('test');

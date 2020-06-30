@@ -74,7 +74,8 @@ public static function getAllThemesSearch($search){
     $sql = "INSERT INTO tb_themes (name) VALUES (?)";
     $maske = Service::setPrepare($sql);
     $maske->bindValue(1,$thema,PDO::PARAM_STR);
-    return Service::setIntoDB($maske);
+    Service::setIntoDB($maske);
+    return Service::getLastId();
  }
 }
 ?>

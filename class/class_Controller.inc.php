@@ -20,13 +20,13 @@ class Controller{
             case "edit":   $this->getEdit();// öffnen des Editierungsbereiches
                            break;  
             case "edit_select":  switch($this->r["select"]){
-                                 case 'userfile': $this->uploadContent();
+                                 case 'f_upload':   $this->checkContent();   
                                                   break;
-                                 case 'add':      $this->addTheme();
+                                 case 't_add':      $this->addTheme();
                                                   break; 
-                                 case 'rename':   $this->renameTheme();
+                                 case 't_rename':   $this->renameTheme();
                                                   break;
-                                 case 'del':      $this->deleteTheme();
+                                 case 't_del':      $this->deleteTheme();
                                                   break;              
                                 }
                                 $this->getEdit();//Ansicht
@@ -42,13 +42,35 @@ class Controller{
     private function renameTheme(){
     }
 
-    private function addTheme(){//Hinzufügen neues Thema
-        Model::setAddTheme($this->r['add']);
-        self::$info =  '<div class="infogreen">Thema hinzugefügt</div>';
+    private function addTheme(){     //Hinzufügen neues Thema
+
+        // neue themen id wird generiert und selected Optionsfelder zugeoordnet
+        $_REQUEST['themen_id'] = Model::setAddTheme($this->r['t_add']);
+
+            if ( $_REQUEST['themen_id'] > 0 ) {  //id wurde angelegt
+               self::$info =  '<div class="infogreen">Thema hinzugefügt</div>';
+            }else{
+                self::$info = '<div class="infored">Thema existiert bereits</div>';
+            }
     }
-    private function uploadContent(){// Hochladen von Content bzw.Änderung Themen
+
+
+
+    private function checkContent(){ //Prüfen des neuen Files
+
+         if($_FILES['userfile']['size'] > MAX_FILE_SIZE){
+             self::$info = '<div class="infored">File größer 1 MB</div>';
+         }
+        
+         if(!in_array($_FILES['userfile']['type'],MIME_TYP)){//Datei ist nicht Mimetype gerecht
+            self::$info = '<div class="infored">Falscher Dateityp</div>';
+         }
+         if(self::$info == "")$this->uploadContent();
+    }
+        
+   private function uploadContent(){   // Hochladen von Content bzw.Änderung Themen  
         if(isset($_FILES['userfile']['name'])){// upload File hat Name
-            $name = $_FILES['userfile']['name'];
+            $name = $_FILES['userfile']['name'];//straße.jpeg
             //php Befehl für uplaod,userfile= input name,tmp_name = fest, pfad, Dateiname
             if(move_uploaded_file($_FILES['userfile']['tmp_name'],DOCUPATH.$name)){
 
