@@ -31,10 +31,11 @@ function visibleArea($value){
 
 //Optionsfeld für Löschen von Dateien erstellen
 function createDeleteFiles(){
-var id = document.querySelector('#themen_id').value;
-var select = document.querySelector("#f_del");
+//var id = document.querySelector('#themen_id').value;
+var select = document.querySelector("#f_del");  //Area
+
 var e = new XMLHttpRequest();
-e.open("get","php/getFileForDelete.php?id=" + id,false);
+e.open("get","php/getFileForDelete.php", false);  //false = nicht Asynchrone
 e.send();
 if(e.readyState == 4 && e.status == 200){
    jsonObj = JSON.parse(e.responseText);
@@ -43,13 +44,18 @@ if(e.readyState == 4 && e.status == 200){
    for(i in jsonObj){
       var option = document.createElement("option");
       option.text = jsonObj[i];
-      select.add(option); 
+      select.add(option);   
    }
  }
 }
 
+function pruefeSelect(){
+    e = document.querySelector("#optionen");
+    visibleArea(e.options[e.selectedIndex].value);
+}
+
 
 /* ############### hauptprogram ############## */
-
-visibleArea('t_add');   // Start mit "Thema hinzufügen"
+pruefeSelect();  //einblenden richtigen Areas
+//visibleArea('t_add');   // Start mit "Thema hinzufügen"
 //alert('test');

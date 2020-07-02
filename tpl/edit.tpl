@@ -7,7 +7,9 @@
 <form method="POST" action="index.php" enctype="multipart/form-data">
 <input type="hidden" name="edit_select">
 <select id="themen_id" onchange="createDeleteFiles()" name="themen_id">
+
 <?php
+// linke Seite pulldown 
 foreach($data as $col){
     echo '<option value="'.$col['id'].'" ';
     s('themen_id',$col['id']);//Ausgabe selected
@@ -15,11 +17,11 @@ foreach($data as $col){
 }
 ?>
 </select>
-<!-- End Themen wählen -->
+<!-- Optionen Thema hinzufügen, löschen etc...-->
 
-<select onchange="visibleArea(this.value)" name="select">
+<select id="optionen" onchange="pruefeSelect()" name="select">
  <option value="t_add"    <?php s('select','t_add')?> >Thema hinzufügen</option>
- <option value="t_rename" <?php s('select','t_rename')?> >Thema ändern</option>
+ <option value="t_rename" <?php s('select','t_rename')?> >Thema umbenennen</option>
  <option value="t_del"    <?php s('select','t_del')?> >Thema löschen</option>
  <option value="f_upload" <?php s('select','f_upload')?> >File upload</option>
  <option value="f_del"    <?php s('select','f_del')?> >File löschen</option>

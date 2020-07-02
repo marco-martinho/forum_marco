@@ -68,14 +68,42 @@ public static function getAllThemesSearch($search){
     $maske = Service::setPrepare($sql);
     $maske->bindValue(1,$name,PDO::PARAM_STR);
     $maske->bindValue(2,$id_themes,PDO::PARAM_INT); 
-    return Service::getOneValue($maske) ;//id wird geliefert wenn path & thema bereits vorhanden
+    return Service::getOneValue($maske);//id wird geliefert wenn path & thema bereits vorhanden
  }
+
+ public static function setUpdateTheme($thema, $id_themes){
+    $sql = "UPDATE tb_themes SET name = ? WHERE id = ?";
+    $maske = Service::setPrepare($sql);
+    $maske->bindValue(1,$thema,PDO::PARAM_STR);
+    $maske->bindValue(2,$id_themes,PDO::PARAM_INT); 
+    return Service::setIntoDB($maske);
+}
+
+
+
  public static function setAddTheme($thema){
     $sql = "INSERT INTO tb_themes (name) VALUES (?)";
     $maske = Service::setPrepare($sql);
     $maske->bindValue(1,$thema,PDO::PARAM_STR);
     Service::setIntoDB($maske);
-    return Service::getLastId();
+    return Service::getLastId();  //die neue id, wenn 0 thema existiert
  }
+
+
+ public static function getIdFromThemes($thema){
+    $sql = "SELECT id FROM tb_themes WHERE name= ? ";
+    $maske = Service::setPrepare($sql);   //sql injection
+    $maske->bindValue(1,$thema,PDO::PARAM_STR);
+    return Service::getOneValue($maske);   // nur 1 wert abholen
+ }
+
+
+ public static function setDeleteTheme($id_themes){
+    $sql = "DELETE from tb_themes WHERE id = ? ";
+    $maske = Service::setPrepare($sql);   //sql injection
+    $maske->bindValue(1,$id_themes,PDO::PARAM_INT);
+    return Service::setIntoDB($maske);   //delete ausführen
+ }
+
 }
 ?>

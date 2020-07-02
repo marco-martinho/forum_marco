@@ -22,14 +22,14 @@ class Controller{
             case "edit_select":  switch($this->r["select"]){
                                  case 'f_upload':   $this->checkContent();   
                                                   break;
-                                 case 't_add':      $this->addTheme();
+                                 case 't_add':      $this->checkAddTheme();
                                                   break; 
-                                 case 't_rename':   $this->renameTheme();
+                                 case 't_rename':   $this->checkRenameTheme();
                                                   break;
-                                 case 't_del':      $this->deleteTheme();
+                                 case 't_del':      $this->checkDeleteTheme();
                                                   break;              
                                 }
-                                $this->getEdit();//Ansicht
+                                $this->getEdit();//Ansicht editfenster
                                 break;
             default: $data = Model::getAllThemes();
                      View::setLayout($data,"start");
@@ -37,10 +37,68 @@ class Controller{
         View::toDisplay();//user Ansicht
         self::$info = "";//Info entfernen
     }
+   
+
+    private function checkDeleteTheme(){
+
+        $muster = "/^[0-9]+$/";
+
+        if(preg_match($muster,$this->r['themen_id'])){
+            $this->deleteTheme();
+        }else{
+            self::$info = '<div class="infogreen">Thema nicht gelöscht</div>';
+        }
+    }
+
     private function deleteTheme(){
+
+        if(MODEL::setDeleteTheme($this->r['themen_id'])){      //Übegabe der id
+              
+            self::$info = '<div class="infogreen">Thema gelöscht</div>';
+        }else{
+            self::$info = '<div class="infored">Löschen fehlgeschlagen</div>';
+        }
+
+            
     }
-    private function renameTheme(){
+
+
+    
+    private function checkAddTheme(){// Validierung der Eingaben
+     $neueThema = trim($this->r['t_add']); //Leerzeichen am Ende und Anfang entfernen
+     $neueThema = strip_tags($neueThema);//alle php html tags XSS Scripting vermeiden
+     //str_pad($neueThema,5,)        Thema ist sehr... xxxx
+                        // Text Hallo   H=0,o = 4    
+     $neueThema = substr($neueThema,0,255); //Thema auf Maximallänge 5 Buchstaben kürzen
+     $arr1 = ['Shit',':(','ß','Fuck'];//Zeichen ersetzen
+     $arr2 = ['S***',''  ,'ss','F***'];
+     $neueThema = str_ireplace($arr1,$arr2,$neueThema);    
+     if(strlen($neueThema) > 0 && ctype_print($neueThema)) $this->addTheme($neueThema);   
     }
+
+    private function checkRenameTheme(){
+        $neueThema = trim($this->r['t_rename']); //Leerzeichen am Ende und Anfang entfernen
+        $neueThema = strip_tags($neueThema);//alle php html tags XSS Scripting vermeiden
+        //str_pad($neueThema,5,)        Thema ist sehr... xxxx
+                           // Text Hallo   H=0,o = 4    
+        $neueThema = substr($neueThema,0,255); //Thema auf Maximallänge 5 Buchstaben kürzen
+        $arr1 = ['Shit',':(','ß','Fuck'];//Zeichen ersetzen
+        $arr2 = ['S***',''  ,'ss','F***'];
+        $neueThema = str_ireplace($arr1,$arr2,$neueThema);    
+        if(strlen($neueThema) > 0 && ctype_print($neueThema)) $this->renameTheme($neueThema);   
+    }
+
+    private function renameTheme($updateThema){ //setRenameTheme
+        //setRenameTheme
+        //"UPDATE tb_themes SET name = $updateThema WHERE id = [themen_id]"
+        if(MODEL::setUpdateTheme($updateThema, $this->r['themen_id'])){
+            self::$info  = '<div class="infogreen">Thema umbenannt</div>';
+        }else{
+            self::$info  = '<div class="infored">Thema nicht umbenannt</div>';
+        }
+
+    }
+
 
     private function addTheme(){     //Hinzufügen neues Thema
 

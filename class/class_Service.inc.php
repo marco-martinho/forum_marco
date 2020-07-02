@@ -37,8 +37,8 @@ class Service{
   }
 
   public static function getLastId(){ 
-      
-      return SELF::$PDO->lastInsertId();
+
+      return SELF::$PDO->lastInsertId();  //frish neues Theme
   }
 
 
